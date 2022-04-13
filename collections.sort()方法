@@ -24,3 +24,20 @@ s.sort(new Comparator<Student>() {//使用匿名类
 负整数 ： 当前对象的值 < 比较对象的值 ， 位置排在前
 	零 ： 当前对象的值 = 比较对象的值 ， 位置不变
 正整数 ： 当前对象的值 > 比较对象的值 ， 位置排在后
+
+
+
+源码:
+
+
+```java
+    if (length < INSERTIONSORT_THRESHOLD) {
+        for (int i=low; i<high; i++)
+            for (int j=i; j>low && c.compare(dest[j-1], dest[j])>0; j--)
+                swap(dest, j, j-1);
+        return;
+    }
+```
+可以看到这里面调用了compare方法，当方法的返回值大于0的时候就将数组的前一个数和后一个数做交换。以升序为例来讲解，升序的话compare方法就 return o1 - o2，那么就是 return dest[j-1] - dest[j]。
+
+当 dest[j-1] > dest[j] 时，就进行交换。当 dest[j-1] <= dest[j] 时位置不变，从而达到数组升序。降序也是一样的道理，就不多讲了。
