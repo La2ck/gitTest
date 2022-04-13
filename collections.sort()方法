@@ -1,0 +1,26 @@
+# collections.sort()方法
+
+```java
+s.sort(new Comparator<Student>() {//使用匿名类
+
+//这样实现接口不用再专门写一格实现类了。
+
+	public int compare(Student s1, Student s2) {
+
+		// TODO 自动生成的方法存根
+
+		//return s1.getId() - s2.getId();//升序
+
+		return s2.getId() - s1.getId();//降序
+
+	}
+
+});
+
+```
+
+这里说一下重写的 public int compareTo(Student o){} 这个方法，它返回三种 int 类型的值： 负整数，零 ，正整数
+返回值的含义
+负整数 ： 当前对象的值 < 比较对象的值 ， 位置排在前
+	零 ： 当前对象的值 = 比较对象的值 ， 位置不变
+正整数 ： 当前对象的值 > 比较对象的值 ， 位置排在后
